@@ -1,0 +1,39 @@
+version: "3.9"
+
+services:
+  master:
+    container_name: master
+    hostname: master
+    build:
+      context: ./master
+    environment:
+      REMOTE_HOSTS: "agent0 agent1 agent2 agent3"
+      REMOTE_PASS: "ansible"
+  agent0:
+    container_name: agent0
+    hostname: agent0
+    build:
+      context: ./agent
+    environment:
+      USER_PASS: "ansible"
+  agent1:
+    container_name: agent1
+    hostname: agent1
+    build:
+      context: ./agent
+    environment:
+      USER_PASS: "ansible"
+  agent2:
+    container_name: agent2
+    hostname: agent2
+    build:
+      context: ./agent
+    environment:
+      USER_PASS: "ansible"
+  agent3:
+    container_name: agent3
+    hostname: agent3
+    build:
+      context: ./agent
+    environment:
+      USER_PASS: "ansible"
