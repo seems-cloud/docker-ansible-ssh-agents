@@ -7,7 +7,7 @@ services:
     build:
       context: ./master
     environment:
-      REMOTE_HOSTS: "agent0 agent1 agent2 agent3"
+      REMOTE_HOSTS: "agent0 agent1 agent2 agent3 agent4 agent5"
       REMOTE_PASS: "ansible"
   agent0:
     container_name: agent0
@@ -33,6 +33,20 @@ services:
   agent3:
     container_name: agent3
     hostname: agent3
+    build:
+      context: ./agent
+    environment:
+      USER_PASS: "ansible"
+  agent4:
+    container_name: agent4
+    hostname: agent4
+    build:
+      context: ./agent
+    environment:
+      USER_PASS: "ansible"
+  agent5:
+    container_name: agent5
+    hostname: agent5
     build:
       context: ./agent
     environment:

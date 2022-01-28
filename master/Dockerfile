@@ -18,6 +18,7 @@ RUN groupadd -g "${APP_GID}" "${APP_USER}" && \
 RUN pip3 install ansible
 
 COPY ./entrypoint.sh "${APP_DIR}"
+COPY ./files/ "${APP_DIR}"
 
 WORKDIR "${APP_DIR}"
 

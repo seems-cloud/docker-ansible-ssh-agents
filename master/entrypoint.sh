@@ -17,4 +17,6 @@ for HOST in ${REMOTE_HOSTS}; do
   sshpass -p "${REMOTE_PASS}" ssh-copy-id -o "StrictHostKeyChecking=no" -i "ansible@${HOST}"
 done
 
+ansible-playbook -i inventry.yaml roles/filebeat.yml
+
 tail -f /dev/null

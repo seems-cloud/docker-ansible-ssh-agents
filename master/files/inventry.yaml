@@ -1,0 +1,21 @@
+all:
+  vars:
+    ansible_connection: ssh
+    ansible_port: 22
+    ansible_user: ansible
+    ansible_become: true
+    ansible_python_interpreter: python3
+    ansible_become_flags: "-H -S -n -i"
+  children:
+    foo:
+      hosts:
+        agent0:
+        agent1:
+    bar:
+      hosts:
+        agent2:
+        agent3:
+    baz:
+      hosts:
+        agent4:
+        agent5:

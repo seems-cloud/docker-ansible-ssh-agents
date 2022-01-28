@@ -10,14 +10,15 @@ ARG DEBIAN_FRONTEND=noninteractive
 SHELL ["/bin/bash", "-c"]
 
 RUN apt-get update && \
-    apt-get install openssh-server -y
+    apt-get install openssh-server sudo -y
 
 RUN groupadd -g "${APP_GID}" "${APP_USER}" && \
     useradd -g "${APP_GID}" -u "${APP_UID}" -s /bin/bash -m -d "${APP_DIR}" "${APP_USER}"
 
 RUN mkdir /run/sshd && \
     chmod 755 /run/sshd && \
-    sed "s/#PermitRootLogin prohibit-password/PermitRootLogin yes/g" -i /etc/ssh/sshd_config
+    sed "s/#PermitRootLogin prohibit-password/PermitRootLogin yes/g" -i /etc/ssh/sshd_config && \
+    echo "ansible ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/ansible
 
 COPY ./entrypoint.sh .
 
