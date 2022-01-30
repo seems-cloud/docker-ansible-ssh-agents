@@ -1,4 +1,10 @@
 ---
+- hosts: all
+  roles:
+    - role: common
+      tags:
+        - common
+
 - hosts: foo-web
   roles:
     - role: frontend

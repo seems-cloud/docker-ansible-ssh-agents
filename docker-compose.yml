@@ -10,15 +10,12 @@ services:
       REMOTE_HOSTS: "foo-web0 foo-web1 foo-app0 foo-app1 foo-db0 foo-db1"
     env_file:
       - ./variables-agent.env
-
 # Foo (Frontend)
   foo-web0:
     container_name: foo-web0
     hostname: foo-web0
     build:
       context: ./agent
-    ports:
-      - "8080:80"
     environment:
       SUDOERS: "true"
     env_file:
@@ -28,13 +25,10 @@ services:
     hostname: foo-web1
     build:
       context: ./agent
-    ports:
-      - "8081:80"
     environment:
       SUDOERS: "true"
     env_file:
       - ./variables-agent.env
-
 # Foo (Application)
   foo-app0:
     container_name: foo-app0
@@ -54,7 +48,6 @@ services:
       SUDOERS: "true"
     env_file:
       - ./variables-agent.env
-
 # Foo (Database)
   foo-db0:
     container_name: foo-db0
