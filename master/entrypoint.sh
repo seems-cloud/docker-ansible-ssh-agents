@@ -17,4 +17,4 @@ for HOST in ${REMOTE_HOSTS}; do
   sshpass -p "${REMOTE_PASS}" ssh-copy-id -o "StrictHostKeyChecking=no" -i "ansible@${HOST}"
 done
 
-ansible-playbook -i inventry.yaml roles/filebeat.yml --tags destroy --limit agent0,agent3
+ansible-playbook -i inventories/prod/inventory.yaml roles/filebeat/filebeat.yml

@@ -7,46 +7,46 @@ services:
     build:
       context: ./master
     environment:
-      REMOTE_HOSTS: "agent0 agent1 agent2 agent3 agent4 agent5"
+      REMOTE_HOSTS: "web0 web1 app0 app1 db0 db1"
       REMOTE_PASS: "ansible"
-  agent0:
-    container_name: agent0
-    hostname: agent0
+  web0:
+    container_name: web0
+    hostname: web0
     build:
       context: ./agent
     environment:
       USER_PASS: "ansible"
-  agent1:
-    container_name: agent1
-    hostname: agent1
+  web1:
+    container_name: web1
+    hostname: web1
     build:
       context: ./agent
     environment:
       USER_PASS: "ansible"
-  agent2:
-    container_name: agent2
-    hostname: agent2
+  app0:
+    container_name: app0
+    hostname: app0
     build:
       context: ./agent
     environment:
       USER_PASS: "ansible"
-  agent3:
-    container_name: agent3
-    hostname: agent3
+  app1:
+    container_name: app1
+    hostname: app1
     build:
       context: ./agent
     environment:
       USER_PASS: "ansible"
-  agent4:
-    container_name: agent4
-    hostname: agent4
+  db0:
+    container_name: db0
+    hostname: db0
     build:
       context: ./agent
     environment:
       USER_PASS: "ansible"
-  agent5:
-    container_name: agent5
-    hostname: agent5
+  db1:
+    container_name: db1
+    hostname: db1
     build:
       context: ./agent
     environment:
