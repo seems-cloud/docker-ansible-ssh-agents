@@ -1,5 +1,5 @@
 ---
-- hosts: web
+- hosts: foo-web
   roles:
     - role: frontend
       tags:

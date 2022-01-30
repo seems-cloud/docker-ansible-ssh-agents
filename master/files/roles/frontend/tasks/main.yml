@@ -1,12 +1,21 @@
 ---
 - name: "Install Apache2"
   apt:
-    name: "apache2"
+    name: 'apache2'
     state: present
     update_cache: yes
   tags: [ frontend ]
 
+- name: "Copy 'index.html'"
+  template:
+    src: index.html.j2
+    dest: /var/www/html/index.html
+    owner: root
+    group: root
+    mode: '0644'
+  tags: [ frontend ]
+
 - name: "Ensure 'Apache2' is Running"
-  service:
-    name: apache2.service
-    state: started
+  shell:
+    cmd: 'apache2ctl start'
+  tags: [ frontend ]

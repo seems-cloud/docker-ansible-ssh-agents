@@ -9,17 +9,17 @@ all:
     ansible_become_user: "root"
     ansible_python_interpreter: python3
   children:
-    foo-app:
+    foo-application:
       children:
-        web:
+        foo-web:
           hosts:
             foo-web0:
             foo-web1:
-        app:
+        foo-app:
           hosts:
             foo-app0:
             foo-app1:
-        db:
+        foo-db:
           hosts:
             foo-db0:
             foo-db1:
