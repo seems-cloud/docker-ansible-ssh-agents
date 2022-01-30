@@ -14,7 +14,9 @@ for HOST in ${REMOTE_HOSTS}; do
     fi
   done
 
-  sshpass -p "${REMOTE_PASS}" ssh-copy-id -o "StrictHostKeyChecking=no" -i "ansible@${HOST}"
+  sshpass -p "${AGENT_APP_PASS}" ssh-copy-id -o "StrictHostKeyChecking=no" -i "ansible@${HOST}"
 done
 
-ansible-playbook -i inventories/prod/inventory.yaml roles/filebeat/filebeat.yml
+ansible-playbook -i inventories/inventory.yaml roles/common.yml --tags all --limit all
+
+"$@"

@@ -1,0 +1,11 @@
+---
+- name: Ensure Directory '/tmp/{...}'
+  file:
+    path: /tmp/{{ item }}
+    state: directory
+    recurse: true
+    mode: '0755'
+  with_items:
+    - apple
+    - banana
+  tags: [ common ]

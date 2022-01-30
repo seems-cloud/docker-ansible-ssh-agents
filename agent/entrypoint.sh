@@ -1,7 +1,9 @@
 #!/bin/bash
 
-echo "ansible:${USER_PASS}" | chpasswd
+echo "root:${AGENT_ROOT_PASS}" | sudo -i chpasswd
+echo "Password set for user 'root'.."
 
-echo "Password set"
+echo "${APP_USER}:${AGENT_APP_PASS}" | sudo -i chpasswd
+echo "Password set for user '${APP_USER}'.."
 
-/usr/sbin/sshd -D
+sudo -u root "$@"

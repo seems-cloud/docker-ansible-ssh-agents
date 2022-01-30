@@ -7,47 +7,15 @@ services:
     build:
       context: ./master
     environment:
-      REMOTE_HOSTS: "web0 web1 app0 app1 db0 db1"
-      REMOTE_PASS: "ansible"
-  web0:
-    container_name: web0
-    hostname: web0
+      REMOTE_HOSTS: "foo-web0"
+    env_file:
+      - ./variables-agent.env
+  foo-web0:
+    container_name: foo-web0
+    hostname: foo-web0
     build:
       context: ./agent
     environment:
-      USER_PASS: "ansible"
-  web1:
-    container_name: web1
-    hostname: web1
-    build:
-      context: ./agent
-    environment:
-      USER_PASS: "ansible"
-  app0:
-    container_name: app0
-    hostname: app0
-    build:
-      context: ./agent
-    environment:
-      USER_PASS: "ansible"
-  app1:
-    container_name: app1
-    hostname: app1
-    build:
-      context: ./agent
-    environment:
-      USER_PASS: "ansible"
-  db0:
-    container_name: db0
-    hostname: db0
-    build:
-      context: ./agent
-    environment:
-      USER_PASS: "ansible"
-  db1:
-    container_name: db1
-    hostname: db1
-    build:
-      context: ./agent
-    environment:
-      USER_PASS: "ansible"
+      SUDOERS: "true"
+    env_file:
+      - ./variables-agent.env
