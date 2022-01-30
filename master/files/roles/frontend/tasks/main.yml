@@ -1,0 +1,12 @@
+---
+- name: "Install Apache2"
+  apt:
+    name: "apache2"
+    state: present
+    update_cache: yes
+  tags: [ frontend ]
+
+- name: "Ensure 'Apache2' is Running"
+  service:
+    name: apache2.service
+    state: started

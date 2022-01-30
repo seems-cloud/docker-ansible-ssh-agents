@@ -14,12 +14,12 @@ all:
         web:
           hosts:
             foo-web0:
-#            foo-web1:
-#        app:
-#          hosts:
-#            foo-app0:
-#            foo-app1:
-#        db:
-#          hosts:
-#            foo-db0:
-#            foo-db1:
+            foo-web1:
+        app:
+          hosts:
+            foo-app0:
+            foo-app1:
+        db:
+          hosts:
+            foo-db0:
+            foo-db1:

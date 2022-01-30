@@ -1,0 +1,6 @@
+---
+- hosts: web
+  roles:
+    - role: frontend
+      tags:
+        - frontend

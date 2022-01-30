@@ -7,12 +7,67 @@ services:
     build:
       context: ./master
     environment:
-      REMOTE_HOSTS: "foo-web0"
+      REMOTE_HOSTS: "foo-web0 foo-web1 foo-app0 foo-app1 foo-db0 foo-db1"
     env_file:
       - ./variables-agent.env
+
+# Foo (Frontend)
   foo-web0:
     container_name: foo-web0
     hostname: foo-web0
+    build:
+      context: ./agent
+    ports:
+      - "8080:80"
+    environment:
+      SUDOERS: "true"
+    env_file:
+      - ./variables-agent.env
+  foo-web1:
+    container_name: foo-web1
+    hostname: foo-web1
+    build:
+      context: ./agent
+    ports:
+      - "8081:80"
+    environment:
+      SUDOERS: "true"
+    env_file:
+      - ./variables-agent.env
+
+# Foo (Application)
+  foo-app0:
+    container_name: foo-app0
+    hostname: foo-app0
+    build:
+      context: ./agent
+    environment:
+      SUDOERS: "true"
+    env_file:
+      - ./variables-agent.env
+  foo-app1:
+    container_name: foo-app1
+    hostname: foo-app1
+    build:
+      context: ./agent
+    environment:
+      SUDOERS: "true"
+    env_file:
+      - ./variables-agent.env
+
+# Foo (Database)
+  foo-db0:
+    container_name: foo-db0
+    hostname: foo-db0
+    build:
+      context: ./agent
+    environment:
+      SUDOERS: "true"
+    env_file:
+      - ./variables-agent.env
+  foo-db1:
+    container_name: foo-db1
+    hostname: foo-db1
     build:
       context: ./agent
     environment:
